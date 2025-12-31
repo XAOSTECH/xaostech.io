@@ -1,0 +1,22 @@
+{
+  "name": "xaostech-landing",
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "postinstall": "astro telemetry disable",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "latest",
+    "@astrojs/react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "three": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "typescript": "latest"
+  }
+}
