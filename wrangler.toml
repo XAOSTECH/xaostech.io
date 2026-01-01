@@ -6,6 +6,7 @@ main = "src/worker.ts"
 directory = "./dist"
 
 [env.production]
+name = "xaostech-webfront"
 routes = [
   { pattern = "xaostech.io/*", zone_name = "xaostech.io" }
 ]
