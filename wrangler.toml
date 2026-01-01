@@ -1,0 +1,17 @@
+name = "xaostech-webfront"
+compatibility_date = "2025-12-31"
+main = "src/worker.ts"
+send_metrics = false
+
+[env.production]
+routes = [
+  { pattern = "xaostech.io/*", zone_name = "xaostech.io" }
+]
+
+[env.production.assets]
+directory = "./dist"
+
+[env.testing]
+routes = [
+  { pattern = "testing.local/*", zone_name = "localhost" }
+]

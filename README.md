@@ -70,21 +70,28 @@
 
 ## 🔍 Overview
 
-Prototype of future business web front.
+Landing page & main website for **xaostech.io**:
+- Marketing & product information
+- React components for interactivity
+- Three.js animations
+- Links to worker services (blog, portfolio, etc.)
 
-### Why webfront worker?
+### Why xaostech.io?
 
-{{WHY_PROJECT}}
+Root domain landing page. Handles:
+- SEO & marketing content
+- Service discovery
+- Brand presence
 
 ---
 
 ## ✨ Features
 
-- 🚀 **Feature 1** - Description of feature 1
-- 🔧 **Feature 2** - Description of feature 2
-- 📦 **Feature 3** - Description of feature 3
-- 🔒 **Feature 4** - Description of feature 4
-- ⚡ **Feature 5** - Description of feature 5
+- 🎨 **React Components** - Reusable UI elements
+- 🌀 **Three.js Animations** - Eye-catching visuals
+- 📱 **Responsive Design** - Mobile-optimized
+- ⚡ **Static Generation** - Astro SSG
+- 🔍 **SEO Optimized** - Meta tags, OG images
 
 ---
 
@@ -92,12 +99,27 @@ Prototype of future business web front.
 
 ### Prerequisites
 
-- {{PREREQUISITE_1}}
-- {{PREREQUISITE_2}}
-- {{PREREQUISITE_3}}
+- Node.js 18+
+- Cloudflare account (for Pages deployment)
 
 ### Quick Start
 
+```bash
+# Clone the repository
+git clone https://github.com/XAOSTECH/xaostech.io.git
+cd xaostech.io
+
+# Install dependencies
+npm install
+
+# Local development
+npm run dev
+
+# Build for production
+npm run build
+
+# Deploy to Cloudflare Pages
+npm run preview
 ```bash
 # Clone the repository
 git clone https://github.com/XAOSTECH/xaostech.io.git
