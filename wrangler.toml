@@ -1,0 +1,11 @@
+name = "xaostech-landing"
+compatibility_date = "2025-12-31"
+
+[assets]
+directory = "./dist"
+
+[env.production]
+routes = [
+  { pattern = "xaostech.io/", zone_name = "xaostech.io" },
+  { pattern = "xaostech.io", zone_name = "xaostech.io" }
+]
