@@ -1,15 +1,19 @@
 name = "xaostech-webfront"
 compatibility_date = "2025-12-31"
-main = "src/worker.ts"
+main = "dist/_worker.js/index.js"
 send_metrics = false
+compatibility_flags = ["nodejs_compat"]
 
 [env.production]
+name = "xaostech-webfront"
+main = "dist/_worker.js/index.js"
 routes = [
   { pattern = "xaostech.io/*", zone_name = "xaostech.io" }
 ]
 
-[env.production.assets]
-directory = "./dist"
+[[env.production.r2_buckets]]
+binding = "IMG"
+bucket_name = "img"
 
 [env.testing]
 routes = [

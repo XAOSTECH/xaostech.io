@@ -11,6 +11,7 @@
   "dependencies": {
     "astro": "latest",
     "@astrojs/react": "latest",
+    "@astrojs/cloudflare": "latest",
     "react": "latest",
     "react-dom": "latest",
     "three": "latest"
