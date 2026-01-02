@@ -1,31 +1,22 @@
 #!/bin/bash
-# Inject build environment variables into wrangler.toml at build time
+# Build Astro + copy shared components (xaostech.io is static, no env var injection needed)
 
 set -e
 
-# Get the worker directory (current directory when called from Cloudflare)
-WRANGLER_FILE="wrangler.toml"
+echo "[xaostech.io] Building Astro..."
+npm run build
 
-if [ ! -f "$WRANGLER_FILE" ]; then
-  echo "⚠️  wrangler.toml not found in $PWD"
-  exit 0
-fi
+echo "[xaostech.io] Cloning shared resources..."
+git clone --depth 1 --filter=blob:none --sparse https://github.com/XAOSTECH/XAOSTECH.git ./shared
+cd shared
+git sparse-checkout set shared
+cd ..
 
-echo "Injecting build environment variables into wrangler.toml..."
+echo "[xaostech.io] Copying shared components..."
+mkdir -p src/components src/styles
+cp shared/shared/components/*.astro src/components/ 2>/dev/null || true
+cp shared/shared/src/styles/*.css src/styles/ 2>/dev/null || true
 
-# Inject KV namespace IDs
-[ -n "$KV_SESSIONS_ID" ] && sed -i "s|id = \"\${KV_SESSIONS_ID}\"|id = \"$KV_SESSIONS_ID\"|g" "$WRANGLER_FILE"
-[ -n "$KV_MESSAGES_ID" ] && sed -i "s|id = \"\${KV_MESSAGES_ID}\"|id = \"$KV_MESSAGES_ID\"|g" "$WRANGLER_FILE"
-[ -n "$KV_CONSENT_ID" ] && sed -i "s|id = \"\${KV_CONSENT_ID}\"|id = \"$KV_CONSENT_ID\"|g" "$WRANGLER_FILE"
-[ -n "$KV_TRANSLATIONS_ID" ] && sed -i "s|id = \"\${KV_TRANSLATIONS_ID}\"|id = \"$KV_TRANSLATIONS_ID\"|g" "$WRANGLER_FILE"
-[ -n "$KV_CACHE_ID" ] && sed -i "s|id = \"\${KV_CACHE_ID}\"|id = \"$KV_CACHE_ID\"|g" "$WRANGLER_FILE"
-[ -n "$KV_BLOG_MEDIA_ID" ] && sed -i "s|id = \"\${KV_BLOG_MEDIA_ID}\"|id = \"$KV_BLOG_MEDIA_ID\"|g" "$WRANGLER_FILE"
+rm -rf shared
 
-# Inject D1 database IDs
-[ -n "$D1_ACCOUNT_DB_ID" ] && sed -i "s|database_id = \"\${D1_ACCOUNT_DB_ID}\"|database_id = \"$D1_ACCOUNT_DB_ID\"|g" "$WRANGLER_FILE"
-[ -n "$D1_API_DB_ID" ] && sed -i "s|database_id = \"\${D1_API_DB_ID}\"|database_id = \"$D1_API_DB_ID\"|g" "$WRANGLER_FILE"
-[ -n "$D1_BLOG_DB_ID" ] && sed -i "s|database_id = \"\${D1_BLOG_DB_ID}\"|database_id = \"$D1_BLOG_DB_ID\"|g" "$WRANGLER_FILE"
-[ -n "$D1_DATA_DB_ID" ] && sed -i "s|database_id = \"\${D1_DATA_DB_ID}\"|database_id = \"$D1_DATA_DB_ID\"|g" "$WRANGLER_FILE"
-[ -n "$D1_PAYMENTS_DB_ID" ] && sed -i "s|database_id = \"\${D1_PAYMENTS_DB_ID}\"|database_id = \"$D1_PAYMENTS_DB_ID\"|g" "$WRANGLER_FILE"
-
-echo "✓ Build environment variables injected"
+echo "✓ Build complete"

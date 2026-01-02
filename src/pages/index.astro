@@ -1,16 +1,21 @@
 ---
+import AnimatedMenu from '../components/AnimatedMenu.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const menuItems = [
+  { label: 'Blog', href: 'https://blog.xaostech.io' },
+  { label: 'Chat', href: 'https://chat.xaostech.io' },
+  { label: 'Data', href: '/data' },
+  { label: 'API', href: 'https://api.xaostech.io' },
+  { label: 'Account', href: '/account' },
+  { label: 'Lingua', href: 'https://lingua.xaostech.io' },
+  { label: 'Payments', href: 'https://payments.xaostech.io' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'GitHub', href: 'https://github.com/XAOSTECH' },
+  { label: 'Docs', href: 'https://docs.xaostech.io' },
+];
 ---
 
-<BaseLayout title="XAOSTECH" description="Innovation platform">
-  <main>
-    <section style="padding: 4rem 2rem; text-align: center;">
-      <h1>XAOSTECH</h1>
-      <p>Exploring the intersection of art, science, and technology</p>
-      <nav style="margin-top: 2rem;">
-        <a href="/about" style="margin-right: 2rem;">About</a>
-        <a href="/portfolio">Portfolio</a>
-      </nav>
-    </section>
-  </main>
+<BaseLayout title="XAOSTECH" description="Innovation platform at the intersection of art, science, and technology">
+  <AnimatedMenu items={menuItems} title="XAOSTECH" />
 </BaseLayout>
