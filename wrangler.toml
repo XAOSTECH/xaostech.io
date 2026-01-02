@@ -4,6 +4,7 @@ main = "src/worker.ts"
 send_metrics = false
 
 [env.production]
+name = "xaostech-webfront"
 routes = [
   { pattern = "xaostech.io/*", zone_name = "xaostech.io" }
 ]
