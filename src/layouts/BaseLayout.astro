@@ -4,7 +4,7 @@ export interface Props {
   description?: string;
 }
 
-const { title = 'XAOSTECH', description = 'Innovation at the intersection of art, science, and technology' } = Astro.props;
+const { title = 'XAOSTECH', description = '(WIP) Innovation at the intersection of art, science, and technology' } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -14,8 +14,8 @@ const { title = 'XAOSTECH', description = 'Innovation at the intersection of art
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" type="image/png" href="favicon.ico" />
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <style is:global>
       * {
         margin: 0;
