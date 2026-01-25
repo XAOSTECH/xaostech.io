@@ -9,9 +9,9 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "latest",
+    "@astrojs/cloudflare": "^12.6.5",
     "@astrojs/react": "latest",
-    "@astrojs/cloudflare": "latest",
+    "astro": "latest",
     "react": "latest",
     "react-dom": "latest",
     "three": "latest"
