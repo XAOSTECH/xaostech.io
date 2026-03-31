@@ -4,7 +4,7 @@ import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
   integrations: [react()],
-  output: 'server',
+  output: 'static',
   adapter: cloudflare(),
   site: 'https://xaostech.io'
 });
