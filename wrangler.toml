@@ -1,12 +1,10 @@
 name = "xaostech-webfront"
 compatibility_date = "2025-12-31"
-main = "dist/_worker.js/index.js"
 send_metrics = false
 compatibility_flags = ["nodejs_compat", "disable_nodejs_process_v2"]
 
 [env.production]
 name = "xaostech-webfront"
-main = "dist/_worker.js/index.js"
 routes = [
   { pattern = "xaostech.io/*", zone_name = "xaostech.io" }
 ]
