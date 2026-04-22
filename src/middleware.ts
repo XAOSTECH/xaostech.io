@@ -1,14 +1,9 @@
 import type { MiddlewareHandler } from 'astro';
 import { sequence } from 'astro:middleware';
-import { getSecurityHeaders } from '../shared/types/security';
+import { applySecurityHeaders } from '../shared/types/security';
 
 const securityMiddleware: MiddlewareHandler = async (_context, next) => {
-  const res = await next();
-  const sec = getSecurityHeaders();
-  for (const k of Object.keys(sec)) {
-    res.headers.set(k, sec[k]);
-  }
-  return res;
+  return applySecurityHeaders(await next());
 };
 
 export const onRequest = sequence(securityMiddleware);
